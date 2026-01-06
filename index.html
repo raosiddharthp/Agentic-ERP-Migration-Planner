@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Agentic ERP Migration Planner</title>
+  <meta name="description" content="Open-source, local-first multi-agent system for planning enterprise ERP migrations">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Space Mono', monospace;
+      background: white;
+      color: black;
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    h1 {
+      color: #0066FF;
+      font-size: 2.4em;
+      border-bottom: 4px solid #0066FF;
+      padding-bottom: 15px;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: #0066FF;
+      font-size: 1.8em;
+      margin-top: 3em;
+      border-bottom: 2px solid #0066FF;
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      color: #0066FF;
+      font-size: 1.4em;
+      margin-top: 2.5em;
+    }
+
+    p, ul, ol, li {
+      margin-bottom: 1.2em;
+    }
+
+    ul, ol {
+      padding-left: 2em;
+    }
+
+    a {
+      color: #0066FF;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Agentic ERP Migration Planner</h1>
+
+<h2>1. Description</h2>
+<p>An open-source, local-first multi-agent system designed to assist enterprises in planning ERP migrations (SAP, Oracle, Dynamics, or any legacy to modern system). The agent takes high-level input about the current ERP landscape (modules, customizations, data volume, integrations) and generates a comprehensive, phased migration roadmap with risk assessment, timeline estimation, cost modeling, and recommended acceleration strategies. Built with LangGraph orchestration and open-source LLMs, the system operates entirely offline for maximum data privacy during sensitive planning phases.</p>
+
+<h2>2. Executive Summary</h2>
+<p>The Agentic ERP Migration Planner addresses one of the highest-risk, highest-cost initiatives in enterprise IT: ERP system migration. By leveraging multi-agent orchestration, the system decomposes complex migration planning into specialized roles (scoping, risk analysis, phasing, cost estimation, recommendation), delivering structured, actionable outputs comparable to senior consultant deliverables. The local-first design ensures sensitive pre-migration data never leaves the organization, while remaining industry and vertical agnostic.</p>
+
+<h2>3. Business Strategy</h2>
+
+<h3>3.1 Strategic Value Proposition</h3>
+<p>The planner reduces migration planning time by 60–80%, identifies risks early, provides transparent cost/timeline modeling, and suggests proven acceleration patterns. It enables internal teams to produce consultant-quality migration strategies without external vendor lock-in during initial phases, while maintaining full data sovereignty.</p>
+
+<h3>3.2 Regulatory Strategy</h3>
+<p>All processing occurs locally with no external API calls by default. Input data remains on-user device. Future extensions can incorporate configurable redaction and audit logging for regulated industries. The open-source nature allows enterprise security teams to review and harden the codebase.</p>
+
+<h2>4. Users</h2>
+
+<h3>4.1 Target User Personas</h3>
+<ul>
+  <li><strong>Enterprise Architect / IT Director</strong>: Leads migration strategy and needs rapid scenario modeling.</li>
+  <li><strong>ERP Program Manager</strong>: Requires detailed phased plans and stakeholder communication artifacts.</li>
+  <li><strong>Transformation Consultant</strong>: Uses tool internally for initial client assessments.</li>
+  <li><strong>CIO / CTO</strong>: Seeks high-level risk and cost overview for budget approval.</li>
+</ul>
+
+<h3>4.2 Lightweight Requirements and User Stories</h3>
+<p>As a user, I want to:</p>
+<ul>
+  <li>Input current ERP details and receive a complete migration roadmap.</li>
+  <li>See identified risks with severity and mitigation recommendations.</li>
+  <li>Get realistic timeline and cost estimates based on system complexity.</li>
+  <li>Compare multiple migration approaches (big bang vs phased vs hybrid).</li>
+  <li>Export the plan as structured Markdown/PDF for stakeholder review.</li>
+  <li>Run everything locally with no data transmission.</li>
+</ul>
+
+<h3>4.3 User Journey Map</h3>
+<ol>
+  <li>User starts app → selects migration type (lift-and-shift, re-platform, re-architect).</li>
+  <li>Agent asks targeted questions about current system (modules, custom code %, data volume, integrations).</li>
+  <li>Agent analyzes input → generates scoped assessment.</li>
+  <li>Agent identifies risks and recommends mitigation strategies.</li>
+  <li>Agent proposes phased plan with timeline and cost model.</li>
+  <li>Agent suggests acceleration options (e.g., automated data mapping, parallel testing).</li>
+  <li>User reviews/edits → exports final roadmap report.</li>
+</ol>
+
+<h2>5. Design and Architecture</h2>
+
+<h3>5.1 Phase A: Vision</h3>
+<p>Create an agentic planning system that replicates senior consultant migration methodology while operating in complete privacy.</p>
+
+<h3>5.2 Phase B: Business</h3>
+<p>Core capabilities: system scoping, risk identification, phasing strategy, timeline/cost modeling, recommendation engine. Success metrics: plan completeness, risk coverage accuracy, time saved vs manual planning.</p>
+
+<h3>5.3 Phase C: Information</h3>
+<p>State maintained in LangGraph memory: user inputs, agent outputs, risk register, phase definitions, cost assumptions. All persisted locally in JSON.</p>
+
+<h3>5.4 Phase D: Technology</h3>
+<ul>
+  <li>Orchestration: LangGraph (stateful graph workflow)</li>
+  <li>LLM backend: Ollama with open-source models (Llama 3.1 8B default)</li>
+  <li>Frontend: Streamlit for interactive input and report viewing</li>
+  <li>Rules engine: Static JSON knowledge base of migration patterns and risks</li>
+  <li>Output: Markdown report with optional PDF export</li>
+</ul>
+
+<h2>6. Rollout and Roadmap</h2>
+
+<h3>6.1 Current State</h3>
+<p>MVP with core agents, basic migration patterns, Streamlit demo.</p>
+
+<h3>6.2 Future State</h3>
+<ul>
+  <li>Integration with real ERP metadata exports</li>
+  <li>Team collaboration mode</li>
+  <li>Scenario comparison dashboard</li>
+  <li>Custom rules import for enterprise-specific patterns</li>
+</ul>
+
+<h3>6.3 Agile Delivery</h3>
+<p>PI-1: Core scoping and risk agents  
+PI-2: Phasing and timeline engine  
+PI-3: Cost modeling and recommendations  
+PI-4: UI and report generation  
+PI-5: Local persistence and export</p>
+
+<h3>6.4 Change Management</h3>
+<p>Open-source with clear contribution guidelines. Version-controlled migration patterns JSON for enterprise customization.</p>
+
+<h3>6.5 Target Value Stream</h3>
+<p>Input collection → System analysis → Risk identification → Strategy generation → Plan synthesis → Report delivery</p>
+
+<h2>7. Multi-Agent Model</h2>
+
+<h3>7.1 Agent Personas</h3>
+<ul>
+  <li><strong>Scoper Agent</strong>: Gathers and validates system details</li>
+  <li><strong>Risk Assessor Agent</strong>: Identifies technical, business, and compliance risks</li>
+  <li><strong>Phasing Planner Agent</strong>: Recommends migration approach and phase breakdown</li>
+  <li><strong>Cost Estimator Agent</strong>: Models resource and timeline costs</li>
+  <li><strong>Recommendation Engine</strong>: Suggests acceleration strategies and best practices</li>
+  <li><strong>Report Formatter</strong>: Generates structured final deliverable</li>
+</ul>
+
+<h3>7.2 Reasoning Trace</h3>
+<p>Full execution trace preserved and displayed for transparency.</p>
+
+<h3>7.3 Decision Matrix and Conflict Resolution</h3>
+<p>Risk scores and phase recommendations weighted by severity and business impact. Conflicts resolved by priority (compliance > cost > timeline).</p>
+
+<h2>8. Intelligence Platform</h2>
+
+<h3>8.1 Unified Intelligence Stack Architecture</h3>
+<p>LangGraph as orchestrator with typed state. Agents as nodes with tool access (none external by default). All local execution.</p>
+
+<h3>8.2 The RAG Component (Future Extension)</h3>
+<p>Optional local vector store of enterprise migration case studies and best practices.</p>
+
+<h3>8.3 Observability Layer</h3>
+<p>Local logging of agent decisions and confidence scores.</p>
+
+<h2>9. The Model Lifecycle</h2>
+<ul>
+  <li>Default: Llama 3.1 8B for speed/accuracy</li>
+  <li>Prompt templates version-controlled</li>
+  <li>Evaluation against historical migration outcomes</li>
+  <li>Community feedback loop for pattern improvement</li>
+</ul>
+
+<h2>10. Infrastructure</h2>
+
+<h3>10.1 Blueprint</h3>
+<ul>
+  <li>Local: Docker Compose with Ollama</li>
+  <li>Hosted demo: Hugging Face Spaces (Streamlit)</li>
+  <li>Enterprise: On-prem deployment package</li>
+</ul>
+
+<h3>10.2 Security</h3>
+<p>No external communication. All data local. Open code for audit.</p>
+
+<h3>10.3 Governance and Compliance</h3>
+<p>Transparent reasoning traces. Configurable risk thresholds.</p>
+
+<h3>10.4 SRE</h3>
+<p>Local execution with graceful error handling.</p>
+
+<h2>11. Impact & Outcomes</h2>
+<p>Expected outcomes:</p>
+<ul>
+  <li>60–80% reduction in initial migration planning effort</li>
+  <li>Early identification of high-impact risks</li>
+  <li>More accurate budget and timeline forecasting</li>
+  <li>Democratization of consultant-level migration expertise</li>
+  <li>Foundation for enterprise-specific customization</li>
+</ul>
+
+</body>
+</html>
