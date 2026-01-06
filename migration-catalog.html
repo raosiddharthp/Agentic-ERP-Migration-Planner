@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Migration Catalog – Agentic ERP Migration Planner</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Space Mono', monospace;
+      background: white;
+      color: black;
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    h1 {
+      color: #0066FF;
+      font-size: 2.4em;
+      border-bottom: 4px solid #0066FF;
+      padding-bottom: 15px;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: #0066FF;
+      font-size: 1.8em;
+      margin-top: 3em;
+      border-bottom: 2px solid #0066FF;
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      color: #0066FF;
+      font-size: 1.4em;
+      margin-top: 2.5em;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 30px 0;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background: #f0f8ff;
+      color: #0066FF;
+      font-weight: 700;
+    }
+
+    ul {
+      padding-left: 2em;
+      margin-bottom: 1.2em;
+    }
+
+    .back {
+      margin-top: 80px;
+      padding-top: 30px;
+      border-top: 2px solid #0066FF;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Migration Catalog – Common Patterns, Risks & Phases</h1>
+
+<p>This catalog provides the foundational knowledge base used by the Agentic ERP Migration Planner. It includes common migration approaches, typical phases, known risk categories, and industry benchmarks. All data is static and open for enterprise customization.</p>
+
+<h2>Common Migration Approaches</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Approach</th>
+      <th>Description</th>
+      <th>Typical Duration</th>
+      <th>Risk Level</th>
+      <th>Best For</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Big Bang</td>
+      <td>Single cutover event — old system off, new system on</td>
+      <td>6–12 months</td>
+      <td>High</td>
+      <td>Smaller organizations, greenfield implementations</td>
+    </tr>
+    <tr>
+      <td>Phased (by module/geography)</td>
+      <td>Roll out modules or business units sequentially</td>
+      <td>12–24 months</td>
+      <td>Medium</td>
+      <td>Most common enterprise approach</td>
+    </tr>
+    <tr>
+      <td>Hybrid / Parallel Run</td>
+      <td>New system runs alongside old for validation period</td>
+      <td>18–36 months</td>
+      <td>Low–Medium</td>
+      <td>High-risk industries (finance, healthcare)</td>
+    </tr>
+    <tr>
+      <td>Technical Upgrade Only</td>
+      <td>Same vendor, version upgrade (e.g., ECC → S/4HANA technical)</td>
+      <td>9–18 months</td>
+      <td>Medium</td>
+      <td>Minimal process change needed</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Standard Migration Phases</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Phase</th>
+      <th>Key Activities</th>
+      <th>Typical Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Discover & Assess</td>
+      <td>Current state analysis, fit-gap, business case</td>
+      <td>2–4 months</td>
+    </tr>
+    <tr>
+      <td>Design & Blueprint</td>
+      <td>To-be processes, data migration strategy, customizations</td>
+      <td>3–6 months</td>
+    </tr>
+    <tr>
+      <td>Build & Configure</td>
+      <td>System setup, development, integrations</td>
+      <td>6–12 months</td>
+    </tr>
+    <tr>
+      <td>Test & Validate</td>
+      <td>Unit, integration, UAT, performance testing</td>
+      <td>4–8 months</td>
+    </tr>
+    <tr>
+      <td>Cutover & Deploy</td>
+      <td>Data migration, go-live, hypercare</td>
+      <td>1–3 months</td>
+    </tr>
+    <tr>
+      <td>Optimize & Stabilize</td>
+      <td>Post-go-live enhancements, knowledge transfer</td>
+      <td>Ongoing</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Common Risk Categories & Examples</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Examples</th>
+      <th>Severity Triggers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data Migration</td>
+      <td>Data volume > 1TB, legacy custom tables, poor data quality</td>
+      <td>High if historical data > 10 years</td>
+    </tr>
+    <tr>
+      <td>Custom Code</td>
+      <td>> 5,000 custom objects, heavy Z-code, deprecated APIs</td>
+      <td>High if > 20% of functionality custom</td>
+    </tr>
+    <tr>
+      <td>Integrations</td>
+      <td>> 50 third-party interfaces, real-time sync required</td>
+      <td>High if mission-critical (banking, payroll)</td>
+    </tr>
+    <tr>
+      <td>Business Process Change</td>
+      <td>Standardization across geographies, new operating model</td>
+      <td>High if multiple legacy instances</td>
+    </tr>
+    <tr>
+      <td>Organizational Readiness</td>
+      <td>Limited internal expertise, resistance to change</td>
+      <td>High if no prior cloud experience</td>
+    </tr>
+    <tr>
+      <td>Compliance & Regulatory</td>
+      <td>SOX, GDPR, industry-specific (e.g., GxP, HIPAA)</td>
+      <td>High in regulated industries</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Industry Benchmarks (Used for Cost/Timeline Estimation)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ERP System</th>
+      <th>Average Project Cost</th>
+      <th>Average Duration</th>
+      <th>Success Rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SAP ECC → S/4HANA</td>
+      <td>$10–50M</td>
+      <td>18–36 months</td>
+      <td>65–75%</td>
+    </tr>
+    <tr>
+      <td>Oracle EBS → Cloud</td>
+      <td>$8–40M</td>
+      <td>15–30 months</td>
+      <td>70%</td>
+    </tr>
+    <tr>
+      <td>Dynamics AX → D365</td>
+      <td>$5–25M</td>
+      <td>12–24 months</td>
+      <td>80%</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="back">
+  <a href="index.html">← Back to Main Design</a>
+</div>
+
+</body>
+</html>

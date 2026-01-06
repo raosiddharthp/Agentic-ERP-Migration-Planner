@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Risk Assessment Rules – Agentic ERP Migration Planner</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Space Mono', monospace;
+      background: white;
+      color: black;
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    h1 {
+      color: #0066FF;
+      font-size: 2.4em;
+      border-bottom: 4px solid #0066FF;
+      padding-bottom: 15px;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: #0066FF;
+      font-size: 1.8em;
+      margin-top: 3em;
+      border-bottom: 2px solid #0066FF;
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      color: #0066FF;
+      font-size: 1.4em;
+      margin-top: 2.5em;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 30px 0;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background: #f0f8ff;
+      color: #0066FF;
+      font-weight: 700;
+    }
+
+    ul {
+      padding-left: 2em;
+      margin-bottom: 1.2em;
+    }
+
+    .back {
+      margin-top: 80px;
+      padding-top: 30px;
+      border-top: 2px solid #0066FF;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Risk Assessment Rules Engine</h1>
+
+<p>The Risk Assessor Agent uses these rules to identify, score, and recommend mitigations for ERP migration risks. Rules are evaluated sequentially based on user input.</p>
+
+<h2>Risk Scoring Matrix</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Severity</th>
+      <th>Impact</th>
+      <th>Likelihood</th>
+      <th>Example Triggers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Critical</td>
+      <td>Project failure or major regulatory breach</td>
+      <td>High probability</td>
+      <td>Data corruption, core financial module failure</td>
+    </tr>
+    <tr>
+      <td>High</td>
+      <td>Major delay or cost overrun</td>
+      <td>Medium–High</td>
+      <td>Heavy custom code, complex integrations</td>
+    </tr>
+    <tr>
+      <td>Medium</td>
+      <td>Moderate impact, recoverable</td>
+      <td>Medium</td>
+      <td>Process change resistance, data quality issues</td>
+    </tr>
+    <tr>
+      <td>Low</td>
+      <td>Minor issue</td>
+      <td>Low</td>
+      <td>Limited user training needs</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Prioritized Risk Rules</h2>
+
+<h3>Data Migration Risks</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th>Trigger Condition</th>
+      <th>Severity</th>
+      <th>Mitigation Recommendation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data Volume</td>
+      <td>> 2TB or > 10 years history</td>
+      <td>High</td>
+      <td>Implement selective archiving and parallel extract strategy</td>
+    </tr>
+    <tr>
+      <td>Data Quality</td>
+      <td>Legacy system with known duplicates/inconsistencies</td>
+      <td>High</td>
+      <td>Dedicated data cleansing phase with automated validation</td>
+    </tr>
+    <tr>
+      <td>Historical Data</td>
+      <td>Requirement to migrate full history</td>
+      <td>Medium</td>
+      <td>Consider read-only archive for older data</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Custom Code & Development Risks</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th>Trigger Condition</th>
+      <th>Severity</th>
+      <th>Mitigation Recommendation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Custom Objects</td>
+      <td>> 5,000 custom objects or > 20% functionality custom</td>
+      <td>High</td>
+      <td>Clean-core approach, selective reimplementation</td>
+    </tr>
+    <tr>
+      <td>Deprecated APIs</td>
+      <td>Use of obsolete interfaces</td>
+      <td>High</td>
+      <td>Early technical upgrade or middleware layer</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Integration Risks</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th>Trigger Condition</th>
+      <th>Severity</th>
+      <th>Mitigation Recommendation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Integration Count</td>
+      <td>> 40 third-party interfaces</td>
+      <td>High</td>
+      <td>Prioritize critical integrations, use integration platform</td>
+    </tr>
+    <tr>
+      <td>Real-time Sync</td>
+      <td>Mission-critical real-time requirements</td>
+      <td>High</td>
+      <td>Parallel run validation period</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Organizational & Change Risks</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th>Trigger Condition</th>
+      <th>Severity</th>
+      <th>Mitigation Recommendation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Process Standardization</td>
+      <td>Moving from fragmented to global processes</td>
+      <td>Medium–High</td>
+      <td>Strong change management and training program</td>
+    </tr>
+    <tr>
+      <td>Internal Expertise</td>
+      <td>Limited cloud/ERP experience in team</td>
+      <td>Medium</td>
+      <td>Partner with experienced SI or build internal capability</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Compliance & Regulatory Risks</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th>Trigger Condition</th>
+      <th>Severity</th>
+      <th>Mitigation Recommendation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Regulated Industry</td>
+      <td>Finance, healthcare, pharma, etc.</td>
+      <td>High</td>
+      <td>Parallel run and extended validation</td>
+    </tr>
+    <tr>
+      <td>SOX/GDPR Controls</td>
+      <td>Financial reporting or personal data</td>
+      <td>High</td>
+      <td>Dedicated compliance workstream and audit trails</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="back">
+  <a href="index.html">← Back to Main Design</a>
+</div>
+
+</body>
+</html>
