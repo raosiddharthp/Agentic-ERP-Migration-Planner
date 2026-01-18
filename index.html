@@ -1,232 +1,598 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Agentic ERP Migration Planner</title>
-  <meta name="description" content="Open-source, local-first multi-agent system for planning enterprise ERP migrations">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
-
-    body {
-      font-family: 'Space Mono', monospace;
-      background: white;
-      color: black;
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 0 20px;
-      line-height: 1.7;
-      font-size: 17px;
-    }
-
-    h1 {
-      color: #0066FF;
-      font-size: 2.4em;
-      border-bottom: 4px solid #0066FF;
-      padding-bottom: 15px;
-      margin-bottom: 40px;
-    }
-
-    h2 {
-      color: #0066FF;
-      font-size: 1.8em;
-      margin-top: 3em;
-      border-bottom: 2px solid #0066FF;
-      padding-bottom: 8px;
-    }
-
-    h3 {
-      color: #0066FF;
-      font-size: 1.4em;
-      margin-top: 2.5em;
-    }
-
-    p, ul, ol, li {
-      margin-bottom: 1.2em;
-    }
-
-    ul, ol {
-      padding-left: 2em;
-    }
-
-    a {
-      color: #0066FF;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic ERP Migration Planner</title>
+    <link rel="stylesheet" href="style.css">
+  
 </head>
-<body>
+<body class="project-page analyzer-theme">
 
-<h1>Agentic ERP Migration Planner</h1>
+    <div class="main-content">
+        <h1>Agentic ERP Migration Planner</h1>
+        
+        <p class="project-description">
+          An open-source, local-first multi-agent system designed to assist enterprises in planning ERP migrations (SAP, Oracle, Dynamics, or any legacy to modern system). The agent takes high-level input about the current ERP landscape (modules, customizations, data volume, integrations) and generates a comprehensive, phased migration roadmap with risk assessment, timeline estimation, cost modeling, and recommended acceleration strategies. Built with LangGraph orchestration and open-source LLMs, the system operates entirely offline for maximum data privacy during sensitive planning phases.</p>
 
-<h2>1. Description</h2>
-<p>An open-source, local-first multi-agent system designed to assist enterprises in planning ERP migrations (SAP, Oracle, Dynamics, or any legacy to modern system). The agent takes high-level input about the current ERP landscape (modules, customizations, data volume, integrations) and generates a comprehensive, phased migration roadmap with risk assessment, timeline estimation, cost modeling, and recommended acceleration strategies. Built with LangGraph orchestration and open-source LLMs, the system operates entirely offline for maximum data privacy during sensitive planning phases.</p>
+          <div class="section">
+            <h3>Open-Source Stack Highlights</h3>
+            <p style="font-size: 1.05rem; color: #555; margin-bottom: 25px; line-height: 1.6;">
+                QueryForge leverages a modular, high-integrity open-source stack to provide deterministic multi-agent reasoning while maintaining a strictly local, zero-egress security posture.
+            </p>
+            
+            <ul style="font-size: 1.1em; line-height: 1.8; columns: 2; column-gap: 40px; list-style: none; padding-left: 0;">
+                <li>• <strong>LangGraph Orchestration</strong> for deterministic multi-agent flows across scope, risk, and cost.</li>
+                <li>• <strong>Local Reasoning Engine</strong> utilizing open LLMs (LLaMA / Mistral / Mixtral) via Ollama.</li>
+                <li>• <strong>Rule-Augmented Planning</strong> via a Python engine for precise cost and timeline estimation.</li>
+                <li>• <strong>Sovereign Context</strong> with local vector indexing for ERP artefacts and assumptions.</li>
+                <li>• <strong>Immutable Runtime</strong> containerized via Docker / Podman for air-gapped environments.</li>
+                <li>• <strong>White-Box Auditing</strong> with explicit reasoning trace storage for executive review.</li>
+                <li>• <strong>Modular Extensions</strong> architected for industry- and ERP-specific knowledge plug-ins.</li>
+                <li>• <strong>Zero-Egress Security</strong> with no external APIs or telemetry collection by design.</li>
+            </ul>
+        </div>
 
-<h2>2. Executive Summary</h2>
-<p>The Agentic ERP Migration Planner addresses one of the highest-risk, highest-cost initiatives in enterprise IT: ERP system migration. By leveraging multi-agent orchestration, the system decomposes complex migration planning into specialized roles (scoping, risk analysis, phasing, cost estimation, recommendation), delivering structured, actionable outputs comparable to senior consultant deliverables. The local-first design ensures sensitive pre-migration data never leaves the organization, while remaining industry and vertical agnostic.</p>
+        <section id="executive-summary">
+            <div class="executive-summary" style="background: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 30px; margin: 40px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <h3 style="color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--soft-bg); padding-bottom: 10px;">Executive Summary: Distill-R1 Framework</h3>
+                
+                <p style="font-size: 1.1rem; line-height: 1.6; color: #333; font-weight: 500; margin-bottom: 20px;">
+                  The Agentic ERP Migration Planner addresses one of the highest-risk, highest-cost initiatives in enterprise IT: ERP system migration. By leveraging multi-agent orchestration, the system decomposes complex migration planning into specialized roles (scoping, risk analysis, phasing, cost estimation, recommendation), delivering structured, actionable outputs comparable to senior consultant deliverables. The local-first design ensures sensitive pre-migration data never leaves the organization, while remaining industry and vertical agnostic.
 
-<h2>3. Business Strategy</h2>
+                </p>
+        
+                <section id="business-strategy" style="max-width: 1000px; margin: 40px auto; padding: 0 20px;">
+                  <h2 style="color: var(--primary); border-bottom: 2px solid var(--secondary); padding-bottom: 10px;">Strategic Imperative: Mastering Migration Complexity</h2>
+                  
+                  <p style="font-size: 1.1rem; line-height: 1.6; color: #333;">
+                      ERP migration planning sits at the critical intersection of <strong>enterprise finance, core operations, and technology risk</strong>. [cite_start]It is typically initiated by regulatory changes, platform end-of-life, or M&A activity, yet is often executed with fragmented ownership[cite: 1]. [cite_start]The Agentic ERP Migration Planner transforms this process into a repeatable, explainable planning intelligence layer[cite: 1].
+                  </p>
+              
+                  <h3 style="color: var(--secondary); margin-top: 30px;">1. Strategic Value for Transformation Leadership</h3>
+                  [cite_start]<p style="font-size: 0.95rem; color: #555;">Designed for strategy-adjacent operators, this capability supports leaders deciding <em>how and when</em> to migrate long before implementation begins[cite: 1]:</p>
+                  
+                  <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; border: 1px solid #ddd;">
+                      <thead>
+                          <tr style="background-color: var(--soft-bg); text-align: left;">
+                              <th style="padding: 12px; border: 1px solid #ddd; color: var(--primary);">Persona</th>
+                              <th style="padding: 12px; border: 1px solid #ddd; color: var(--primary);">Strategic Application</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Transformation Offices</td>
+                              [cite_start]<td style="padding: 10px; border: 1px solid #ddd;">Evaluating migration options, timing, and scope as part of broader business transformation[cite: 1].</td>
+                          </tr>
+                          <tr>
+                              <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">CIO & Architecture</td>
+                              [cite_start]<td style="padding: 10px; border: 1px solid #ddd;">Translating business constraints into feasible paths without premature vendor lock-in[cite: 1].</td>
+                          </tr>
+                          <tr>
+                              <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Finance Leadership</td>
+                              [cite_start]<td style="padding: 10px; border: 1px solid #ddd;">Modeling cost exposure, dual-run risk, and CapEx vs. OpEx trade-offs before funding[cite: 1].</td>
+                          </tr>
+                          <tr>
+                              <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Value Assurance</td>
+                              [cite_start]<td style="padding: 10px; border: 1px solid #ddd;">Establishing defensible baseline plans to govern delivery partners and integrators[cite: 1].</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              
+                  <div style="margin: 40px 0; text-align: center;">
+                      <h4 style="color: var(--primary); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">Decision Support vs. Operational Tooling</h4>
+                      <p style="font-size: 0.95rem; color: #444; max-width: 800px; margin: 0 auto;">
+                          [cite_start]QueryForge operates upstream of implementation, replacing static slideware and consultant-only models with an active intelligence layer[cite: 1].
+                      </p>
+                  </div>
+              
+                  <h3 style="color: var(--secondary); margin-top: 30px;">2. Core Strategic Capabilities</h3>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                      <div style="background: white; border: 1px solid #eee; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                          <h4 style="margin-top: 0; color: var(--primary);"><i class="fas fa-balance-scale"></i> Explicit Trade-offs</h4>
+                          [cite_start]<p style="font-size: 0.9rem; color: #555; margin-bottom: 0;">Make migration decisions backed by explicit assumptions and transparent trade-off modeling[cite: 1].</p>
+                      </div>
+                      <div style="background: white; border: 1px solid #eee; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                          <h4 style="margin-top: 0; color: var(--primary);"><i class="fas fa-project-diagram"></i> Strategy Comparison</h4>
+                          [cite_start]<p style="font-size: 0.9rem; color: #555; margin-bottom: 0;">Objectively compare alternative migration strategies long before contractual or vendor lock-in[cite: 1].</p>
+                      </div>
+                      <div style="background: white; border: 1px solid #eee; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                          <h4 style="margin-top: 0; color: var(--primary);"><i class="fas fa-database"></i> Knowledge Retention</h4>
+                          [cite_start]<p style="font-size: 0.9rem; color: #555; margin-bottom: 0;">Retain critical institutional knowledge beyond the lifecycle of individual consultants or programs[cite: 1].</p>
+                      </div>
+                      <div style="background: white; border: 1px solid #eee; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                          <h4 style="margin-top: 0; color: var(--primary);"><i class="fas fa-gem"></i> Capability Maturity</h4>
+                          [cite_start]<p style="font-size: 0.9rem; color: #555; margin-bottom: 0;">Treat ERP migration planning as a core enterprise capability rather than a one-off engagement[cite: 1].</p>
+                      </div>
+                  </div>
+              </section>
+              <section id="users-stakeholders" style="max-width: 1000px; margin: 40px auto 40px 0; clear: both; display: block;">
+                <h3 style="color: var(--primary); margin-bottom: 20px; border-left: 5px solid var(--secondary); padding-left: 15px; font-size: 1.5rem;">Target User Personas: Strategic Transformation Stakeholders</h3>
+                
+                <p style="font-size: 1.05rem; color: #555; margin-bottom: 25px; line-height: 1.6;">
+                    QueryForge aligns specialized enterprise personas to ensure that complex ERP migration planning translates into reduced risk, financial predictability, and architectural integrity.
+                </p>
+            
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                    
+                    <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <div style="width: 50px; height: 50px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-right: 15px;">CIO</div>
+                            <div>
+                                <h4 style="margin: 0; color: var(--primary);">CIO / Head of Apps</h4>
+                                <p style="margin: 0; font-size: 0.85rem; color: #666;">Technology Governance</p>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.9rem; line-height: 1.5; color: #333; flex-grow: 1;">
+                            <strong>Goals:</strong> Reduce migration risk, ensure architectural coherence, and maintain executive confidence.<br><br>
+                            <strong>Pain Points:</strong> Fragmented inputs from vendors and lack of transparent rationale for timelines.<br><br>
+                            <span style="color: var(--secondary); font-weight: bold;">QueryForge Value:</span> Stress-tests alternative migration approaches through deterministic reasoning.
+                        </p>
+                    </div>
+            
+                    <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <div style="width: 50px; height: 50px; background: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-right: 15px;">CFO</div>
+                            <div>
+                                <h4 style="margin: 0; color: var(--primary);">CFO / Finance Lead</h4>
+                                <p style="margin: 0; font-size: 0.85rem; color: #666;">Financial Modernization</p>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.9rem; line-height: 1.5; color: #333; flex-grow: 1;">
+                            <strong>Goals:</strong> Predict Total Cost of Ownership (TCO) and understand financial exposure during dual-run phases.<br><br>
+                            <strong>Pain Points:</strong> Poor cost visibility and over-optimistic timelines from external advisors.<br><br>
+                            <span style="color: var(--secondary); font-weight: bold;">QueryForge Value:</span> Models cost vs. speed trade-offs to align with finance modernization goals.
+                        </p>
+                    </div>
+            
+                    <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <div style="width: 50px; height: 50px; background: #263238; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-right: 15px;">EA</div>
+                            <div>
+                                <h4 style="margin: 0; color: var(--primary);">Enterprise Architect</h4>
+                                <p style="margin: 0; font-size: 0.85rem; color: #666;">System Integrity</p>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.9rem; line-height: 1.5; color: #333; flex-grow: 1;">
+                            <strong>Goals:</strong> Rationalize customizations and preserve core principles while reducing technical debt.<br><br>
+                            <strong>Pain Points:</strong> One-size-fits-all templates and inadequate traceability from constraints to decisions.<br><br>
+                            <span style="color: var(--secondary); font-weight: bold;">QueryForge Value:</span> Provides scenario-based planning with full traceability for architectural rationalization.
+                        </p>
+                    </div>
+            
+                    <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <div style="width: 50px; height: 50px; background: #3949ab; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-right: 15px;">PM</div>
+                            <div>
+                                <h4 style="margin: 0; color: var(--primary);">Transformation Manager</h4>
+                                <p style="margin: 0; font-size: 0.85rem; color: #666;">Execution Predictability</p>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.9rem; line-height: 1.5; color: #333; flex-grow: 1;">
+                            <strong>Goals:</strong> Deliver predictable phased plans and identify critical-path risks early.<br><br>
+                            <strong>Pain Points:</strong> Poor visibility into cross-domain dependencies and static plans that collapse under complexity.<br><br>
+                            <span style="color: var(--secondary); font-weight: bold;">QueryForge Value:</span> Automates dependency mapping and provides explainable reasoning for sequencing decisions.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section id="requirements-journey" style="max-width: 1000px; margin: 40px auto 40px 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+              <h3 style="color: var(--primary); margin-bottom: 20px; border-left: 5px solid var(--secondary); padding-left: 15px; font-size: 1.5rem;">Requirements & Strategic User Journey</h3>
+              
+              <p style="font-size: 1.05rem; color: #555; margin-bottom: 25px; line-height: 1.6;">
+                  QueryForge is engineered to bridge the gap between high-level strategic intent and technical execution by automating the decomposition of complex ERP landscapes into auditable, sovereign planning assets.
+              </p>
+          
+              <div style="background: var(--soft-bg); border-radius: 8px; padding: 25px; margin-bottom: 30px; border: 1px solid #e0e0e0;">
+                  <h4 style="color: var(--primary); margin-top: 0; margin-bottom: 15px;"><i class="fas fa-list-check" style="margin-right: 10px;"></i> Core Functional Requirements</h4>
+                  <ul style="line-height: 1.8; color: #333; font-size: 0.95rem; padding-left: 20px;">
+                      <li><strong>Landscape Capture:</strong> Ingest high-level ERP landscape inputs without requiring deep technical discovery.</li>
+                      <li><strong>Modular Decomposition:</strong> Decompose migration planning into modular, auditable reasoning steps.</li>
+                      <li><strong>Roadmap Generation:</strong> Generate phased roadmaps integrated with risks, costs, and dependencies.</li>
+                      <li><strong>Data Sovereignty:</strong> Operate fully offline to protect sensitive enterprise data and intellectual property.</li>
+                  </ul>
+              </div>
+          
+              <details style="background: #ffffff; border: 1px solid var(--primary); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px;">
+                  <summary style="background-color: var(--primary); color: white; padding: 20px; font-size: 1.25rem; font-weight: bold; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                      <span>01b. Lightweight Requirements & User Stories</span>
+                      <span style="font-size: 0.9rem; border: 1px solid white; padding: 2px 8px; border-radius: 4px;">Click to Expand</span>
+                  </summary>
+                  
+                  <div style="padding: 20px; overflow-x: auto;">
+                      <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+                          <thead>
+                              <tr style="background-color: #f1f3f4; color: var(--primary); border-bottom: 2px solid var(--primary);">
+                                  <th style="padding: 12px; border: 1px solid #ddd;">Persona</th>
+                                  <th style="padding: 12px; border: 1px solid #ddd;">User Story</th>
+                                  <th style="padding: 12px; border: 1px solid #ddd;">Success Metric</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">CIO</td>
+                                  <td style="padding: 10px; border: 1px solid #ddd;">I want a high-level but defensible migration roadmap so I can brief the board without relying solely on external consultants.</td>
+                                  <td style="padding: 10px; border: 1px solid #ddd;">Board Approval readiness.</td>
+                              </tr>
+                              <tr style="background-color: #f9f9f9;">
+                                  <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Enterprise Architect</td>
+                                  <td style="padding: 10px; border: 1px solid #ddd;">I want to see how customizations influence sequencing so that I can proactively reduce migration complexity.</td>
+                                  <td style="padding: 10px; border: 1px solid #ddd;">Complexity reduction ratio.</td>
+                              </tr>
+                              <tr>
+                                  <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">CFO</td>
+                                  <td style="padding: 10px; border: 1px solid #ddd;">I want cost estimates with confidence bands and assumptions so that I can plan funding and cash flow realistically.</td>
+                                  <td style="padding: 10px; border: 1px solid #ddd;">Forecast accuracy &plusmn;15%.</td>
+                              </tr>
+                              <tr style="background-color: #f9f9f9;">
+                                  <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Program Manager</td>
+                                  <td style="padding: 10px; border: 1px solid #ddd;">I want risks surfaced early and mapped to mitigations so that execution surprises are minimized.</td>
+                                  <td style="padding: 10px; border: 1px solid #ddd;">Zero unplanned path dependencies.</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </details>
+          
+              <details style="background: #ffffff; border: 1px solid var(--primary); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                  <summary style="background-color: var(--primary); color: white; padding: 20px; font-size: 1.25rem; font-weight: bold; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                      <span>01c. User Journey: Landscape Input → Executive Roadmap</span>
+                      <span style="font-size: 0.9rem; border: 1px solid white; padding: 2px 8px; border-radius: 4px;">Click to Expand</span>
+                  </summary>
+                  
+                  <div style="padding: 20px; overflow-x: auto;">
+                      <p style="font-size: 0.95rem; color: #555; margin-bottom: 20px;">This journey tracks the transformation of raw ERP metadata into actionable strategic intelligence via five automated planning stages.</p>
+                      
+                      
+          
+                      <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left; margin-top: 20px;">
+                          <thead>
+                              <tr style="background-color: #f1f3f4; color: var(--primary); border-bottom: 2px solid var(--primary);">
+                                  <th style="padding: 12px; border: 1px solid #ddd; width: 20%;">Stage</th>
+                                  <th style="padding: 12px; border: 1px solid #ddd; width: 40%;">Technical Input / Action</th>
+                                  <th style="padding: 12px; border: 1px solid #ddd; width: 40%;">Strategic Output</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold; background: #f8f9fa; color: var(--primary);">1. Landscape Input</td>
+                                  <td style="padding: 12px; border: 1px solid #ddd;">ERP platforms, modules, data volumes, and integration footprint.</td>
+                                  <td style="padding: 12px; border: 1px solid #ddd;">Comprehensive Inventory Baseline.</td>
+                              </tr>
+                              <tr style="background-color: #f9f9f9;">
+                                  <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold; background: #f8f9fa; color: var(--primary);">2. Decomposition</td>
+                                  <td style="padding: 12px; border: 1px solid #ddd;">Automated scope normalization, dependency mapping, and complexity classification.</td>
+                                  <td style="padding: 12px; border: 1px solid #ddd;">Logical Planning Clusters.</td>
+                              </tr>
+                              <tr>
+                                  <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold; background: #f8f9fa; color: var(--primary);">3. Scenario Generation</td>
+                                  <td style="padding: 12px; border: 1px solid #ddd;">Modeling Big Bang, Phased, and Hybrid paths with acceleration strategies.</td>
+                                  <td style="padding: 12px; border: 1px solid #ddd;">Strategic Options Matrix.</td>
+                              </tr>
+                              <tr style="background-color: #f9f9f9;">
+                                  <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold; background: #f8f9fa; color: var(--primary);">4. Risk & Cost Modeling</td>
+                                  <td style="padding: 12px; border: 1px solid #ddd;">Migration risk heatmaps and resource sensitivity analysis.</td>
+                                  <td style="padding: 12px; border: 1px solid #ddd;">Defensible Funding Plan.</td>
+                              </tr>
+                              <tr>
+                                  <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold; background: #f8f9fa; color: var(--primary);">5. Executive Close</td>
+                                  <td style="padding: 12px; border: 1px solid #ddd;">Finalizing decision rationale, assumptions, and phased roadmap.</td>
+                                  <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold; color: #2e7d32;">Executive-Ready Business Case.</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </details>
+          </section>
+          <section id="technical-roadmap" style="max-width: 1000px; margin: 40px auto 40px 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+            <h3 style="color: var(--primary); margin-bottom: 20px; border-left: 5px solid var(--secondary); padding-left: 15px; font-size: 1.5rem;">01d. Technical Rollout Roadmap (SAFe + PI Mapping)</h3>
+            
+            <p style="font-size: 1.05rem; color: #555; margin-bottom: 25px; line-height: 1.6;">
+                The implementation strategy for <strong>QueryForge</strong> sequences migration planning capabilities into prioritized <strong>Program Increments (PIs)</strong>. This roadmap prioritizes the delivery of a sovereign planning intelligence baseline before scaling into complex multi-ERP portfolio optimization.
+            </p>
+        
+            <details open style="background: #ffffff; border: 1px solid var(--primary); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                <summary style="background-color: var(--primary); color: white; padding: 20px; font-size: 1.25rem; font-weight: bold; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    <span><i class="fas fa-layer-group" style="margin-right: 10px;"></i> Implementation Phases & PI Mapping</span>
+                    <span style="font-size: 0.9rem; border: 1px solid white; padding: 2px 8px; border-radius: 4px;">Expanded</span>
+                </summary>
+                
+                <div style="padding: 20px; overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+                        <thead>
+                            <tr style="background-color: var(--soft-bg); color: var(--primary); border-bottom: 2px solid var(--primary);">
+                                <th style="padding: 12px; border: 1px solid #ddd; width: 15%;">Phase</th>
+                                <th style="padding: 12px; border: 1px solid #ddd; width: 25%;">Focus</th>
+                                <th style="padding: 12px; border: 1px solid #ddd; width: 35%;">Deliverables (Enablers)</th>
+                                <th style="padding: 12px; border: 1px solid #ddd; width: 25%;">Strategic Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">1: MVP</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Planning Intelligence</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Single-ERP landscape ingestion; Core multi-agent planning logic; Deterministic, explainable outputs.</td>
+                                <td style="padding: 10px; border: 1px solid #ddd; color: var(--secondary); font-weight: bold;">Establishes defensible planning baseline.</td>
+                            </tr>
+                            <tr style="background-color: #fcfcfc;">
+                                <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">2: Advanced</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Scenario Modeling</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Multi-ERP coexistence planning; Parallel migration path comparison; Risk-adjusted timeline optimization.</td>
+                                <td style="padding: 10px; border: 1px solid #ddd; color: var(--secondary); font-weight: bold;">Enables objective strategy selection.</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">3: Scale</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Enterprise Portfolio</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Portfolio-level ERP migration planning; Multi-program dependency modeling; Optional offline EA repository integration.</td>
+                                <td style="padding: 10px; border: 1px solid #ddd; color: var(--secondary); font-weight: bold;">Mastery of cross-domain transformation.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+        
+            <div style="margin-top: 30px; text-align: center; background: white; padding: 30px; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
+                <h4 style="color: var(--primary); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">SAFe PI Roadmap: Transformation Readiness Increments</h4>
+                <div style="background: #fdfdfd; border: 2px dashed #ccc; border-radius: 12px; padding: 40px; color: #777;">
+                    <i class="fas fa-map-signs fa-3x" style="margin-bottom: 15px;"></i>
+                    <p>[Diagram Placeholder: SAFe PI Roadmap – Distillation of Planning Capabilities]</p>
+                </div>
+                <p style="font-size: 0.85rem; color: #777; font-style: italic; margin-top: 15px;">Visualizing the technical progression from single-domain logic to enterprise-wide portfolio orchestration.</p>
+            </div>
+        </section>
+        <section id="multi-agent-chain" style="max-width: 1000px; margin: 40px auto; padding: 0 20px;">
+          <h2 style="color: var(--primary); border-bottom: 2px solid var(--secondary); padding-bottom: 10px;">Multi-Agent Reasoning Chain: The Migration "Logic Swarm"</h2>
+          
+          <p style="font-size: 1.1rem; line-height: 1.6; color: #333;">
+              [cite_start]QueryForge decomposes ERP migration planning into specialized reasoning agents, each responsible for a bounded cognitive task[cite: 1]. [cite_start]This ensures that every aspect of the transformation—from scope normalization to resource demand—is handled with the nuance of a senior expert[cite: 1].
+          </p>
+      
+          <h3 style="color: var(--secondary); margin-top: 30px;">1. The Autonomous Workforce (Agent Personas)</h3>
+          <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; border: 1px solid #ddd;">
+              <thead>
+                  <tr style="background-color: var(--soft-bg); text-align: left;">
+                      <th style="padding: 12px; border: 1px solid #ddd; color: var(--primary);">Agent Role</th>
+                      <th style="padding: 12px; border: 1px solid #ddd; color: var(--primary);">Reasoning Engine</th>
+                      <th style="padding: 12px; border: 1px solid #ddd; color: var(--primary);">Strategic Responsibility</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Lead ERP Architect</td>
+                      <td style="padding: 10px; border: 1px solid #ddd;">Scope Analysis Agent</td>
+                      [cite_start]<td style="padding: 10px; border: 1px solid #ddd;">Normalizes inputs and identifies migration complexity drivers[cite: 1].</td>
+                  </tr>
+                  <tr>
+                      <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Migration Program Director</td>
+                      <td style="padding: 10px; border: 1px solid #ddd;">Dependency & Phasing Agent</td>
+                      [cite_start]<td style="padding: 10px; border: 1px solid #ddd;">Maps cross-module dependencies and proposes feasible sequencing[cite: 1].</td>
+                  </tr>
+                  <tr>
+                      <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Risk & Compliance Officer</td>
+                      <td style="padding: 10px; border: 1px solid #ddd;">Risk Assessment Agent</td>
+                      [cite_start]<td style="padding: 10px; border: 1px solid #ddd;">Assigns likelihood and impact scores to technical and regulatory risks[cite: 1].</td>
+                  </tr>
+                  <tr>
+                      <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Finance Transformation Advisor</td>
+                      <td style="padding: 10px; border: 1px solid #ddd;">Cost & Timeline Agent</td>
+                      [cite_start]<td style="padding: 10px; border: 1px solid #ddd;">Estimates effort and duration using confidence intervals, not point estimates[cite: 1].</td>
+                  </tr>
+              </tbody>
+          </table>
+      
+          <h3 style="color: var(--secondary); margin-top: 30px;">2. The “Reasoning Trace” (Transparent Auditing)</h3>
+          [cite_start]<p style="font-size: 0.95rem; color: #555;">To satisfy executive trust and regulatory requirements, QueryForge maintains a full provenance of every planning decision[cite: 1]:</p>
+          <div style="background: #263238; color: #81d4fa; padding: 20px; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; line-height: 1.5;">
+              <p style="margin: 0;">[Lead_Architect]: Normalized Finance module. [cite_start]Identified high-complexity customization in G/L posting logic[cite: 1].</p>
+              <p style="margin: 5px 0 0 0;">[Program_Director]: Flagged sequencing conflict. [cite_start]Custom G/L logic must be brownfield-ready before Treasury migration[cite: 1].</p>
+              [cite_start]<p style="margin: 5px 0 0 0;">[Finance_Advisor]: Adjusting cost confidence band for Phase 1. 20% contingency added for custom logic validation[cite: 1].</p>
+          </div>
+      
+          <div style="margin: 40px 0; text-align: center;">
+              <h4 style="color: var(--primary); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">Collaborative Advisory Dynamics</h4>
+              [cite_start][Image: Multi-Agent Distillation & Decision Flow diagram representing agents challenging assumptions and surfacing conflicts [cite: 1]]
+              [cite_start]<p style="font-size: 0.85rem; color: #777; font-style: italic; margin-top: 10px;">Visualizing how specialized agent personas mirror real-world consulting dynamics[cite: 1].</p>
+          </div>
+      
+          <details style="margin: 30px 0; padding: 20px; background: #eef4ff; border-radius: 12px; border: 1px solid #cce0ff;">
+              <summary style="font-size: 1.1em; font-weight: bold; cursor: pointer; color: #0052cc;">View Decision Matrix & Conflict Resolution Strategy</summary>
+              <div style="margin-top: 20px;">
+                  [cite_start]<p style="font-size: 0.95rem; color: #444;">When agents disagree, the system applies structured resolution logic to ensure decisions remain intentional[cite: 1]:</p>
+                  <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 0.85rem; border: 1px solid #ddd; background: white;">
+                      <thead>
+                          <tr style="background-color: #f2f6ff;">
+                              <th style="padding: 8px; border: 1px solid #ddd;">Conflict Factor</th>
+                              <th style="padding: 8px; border: 1px solid #ddd;">Resolution Logic</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td style="padding: 8px; border: 1px solid #ddd;">Strategic Priority</td>
+                              <td style="padding: 8px; border: 1px solid #ddd;">Weighted criteria: Risk &gt; Regulatory Impact &gt; Cost &gt; [cite_start]Time[cite: 1].</td>
+                          </tr>
+                          <tr>
+                              <td style="padding: 8px; border: 1px solid #ddd;">Constraint Precedence</td>
+                              [cite_start]<td style="padding: 8px; border: 1px solid #ddd;">Regulatory requirements take precedence over operational optimization[cite: 1].</td>
+                          </tr>
+                          <tr>
+                              <td style="padding: 8px; border: 1px solid #ddd;">Decision Convergence</td>
+                              [cite_start]<td style="padding: 8px; border: 1px solid #ddd;">Explicit trade-off articulation is generated rather than silent convergence[cite: 1].</td>
+                          </tr>
+                      </tbody>
+                  </table>
+                  
+                  <p style="font-style: italic; color: #666;">
+                      [cite_start]This <strong>Reasoning Trace</strong> ensures every recommendation is inspectable, replayable, and defensible to stakeholders[cite: 1].
+                  </p>
+              </div>
+          </details>
+      </section>
+      <section id="model-lifecycle" style="max-width: 1000px; margin: 40px auto; padding: 0 20px;">
+        <h2 style="color: var(--primary); border-bottom: 2px solid var(--secondary); padding-bottom: 10px;">Intelligence Platform Model Lifecycle</h2>
+        
+        <p style="font-size: 1.1rem; line-height: 1.6; color: #333;">
+            The QueryForge lifecycle is architected for <strong>continuous re-planning</strong> rather than static, one-off analysis. This iterative approach ensures that migration strategies remain synchronized with evolving enterprise constraints and ERP metadata changes.
+        </p>
+    
+        <h3 style="color: var(--secondary); margin-top: 30px;">1. The Iterative Planning Loop</h3>
+        <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; border: 1px solid #ddd;">
+            <thead>
+                <tr style="background-color: var(--soft-bg); text-align: left;">
+                    <th style="padding: 12px; border: 1px solid #ddd; color: var(--primary);">Lifecycle Phase</th>
+                    <th style="padding: 12px; border: 1px solid #ddd; color: var(--primary);">Functional Action</th>
+                    <th style="padding: 12px; border: 1px solid #ddd; color: var(--primary);">System Outcome</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Initialize</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Load high-level ERP landscape data and business constraints.</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Structured Planning Context.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Reason</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Trigger multi-agent planning, decomposition, and synthesis.</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Heuristic Migration Scenarios.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Validate</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Execute cross-agent consistency checks and rule validation.</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Architecturally Coherent Plans.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Audit</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Persist the full reasoning trace, metadata, and assumptions.</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Immutable Audit Trail.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Evolve</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Re-run planning cycles as inputs, costs, or risks change.</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Dynamic Strategy Alignment.</td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <div style="margin: 40px 0; text-align: center;">
+            <h4 style="color: var(--primary); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">Continuous Planning Lifecycle</h4>
+            
+            <p style="font-size: 0.85rem; color: #777; font-style: italic; margin-top: 10px;">Visualizing QueryForge as a living decision-support system for long-term transformation governance.</p>
+        </div>
+    
+        <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 25px; border-radius: 8px; margin-top: 30px;">
+            <h4 style="margin-top: 0; color: var(--primary);">Lifecycle Strategic Value</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 0;">
+                By automating the <strong>Audit</strong> and <strong>Evolve</strong> phases, QueryForge prevents "plan decay"—a common failure point in manual ERP planning where static documents become obsolete weeks after creation.
+            </p>
+        </div>
+    </section>
+    <section id="infrastructure-blueprint" style="max-width: 1000px; margin: 40px auto; padding: 0 20px; padding-bottom: 60px;">
+      <h2 style="color: var(--primary); border-bottom: 2px solid var(--secondary); padding-bottom: 10px;">Local-First Infrastructure & Security Posture</h2>
+      
+      <p style="font-size: 1.1rem; line-height: 1.6; color: #333;">
+          QueryForge is architected as a <strong>Sovereign Planning Landing Zone</strong>. Designed for highly regulated and security-conscious enterprises, the infrastructure ensures that sensitive ERP metadata and strategic roadmaps never exit the corporate perimeter.
+      </p>
+  
+      <h3 style="color: var(--secondary); margin-top: 30px;">1. Sovereign Deployment Blueprint</h3>
+      <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; border: 1px solid #ddd;">
+          <thead>
+              <tr style="background-color: var(--soft-bg); text-align: left;">
+                  <th style="padding: 12px; border: 1px solid #ddd; color: var(--primary);">Infrastructure Layer</th>
+                  <th style="padding: 12px; border: 1px solid #ddd; color: var(--primary);">Component Stack</th>
+                  <th style="padding: 12px; border: 1px solid #ddd; color: var(--primary);">Strategic Purpose</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Orchestration</td>
+                  <td style="padding: 10px; border: 1px solid #ddd;">LangGraph</td>
+                  <td style="padding: 10px; border: 1px solid #ddd;">Deterministic state management for complex multi-agent planning loops.</td>
+              </tr>
+              <tr>
+                  <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Reasoning Engine</td>
+                  <td style="padding: 10px; border: 1px solid #ddd;">Open-Source LLMs</td>
+                  <td style="padding: 10px; border: 1px solid #ddd;">Offline, local inference using LLaMA, Mistral, or Mixtral variants.</td>
+              </tr>
+              <tr>
+                  <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Runtime Environment</td>
+                  <td style="padding: 10px; border: 1px solid #ddd;">Docker / Podman</td>
+                  <td style="padding: 10px; border: 1px solid #ddd;">Containerized deployment supporting air-gapped and regulated environments.</td>
+              </tr>
+              <tr>
+                  <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Planning Logic</td>
+                  <td style="padding: 10px; border: 1px solid #ddd;">Python-based Planners</td>
+                  <td style="padding: 10px; border: 1px solid #ddd;">Rule-augmented estimation for costs, timelines, and risk factors.</td>
+              </tr>
+          </tbody>
+      </table>
+  
+      <div style="margin: 40px 0; text-align: center;">
+          <h4 style="color: var(--primary); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">Air-Gapped Architecture Topology</h4>
+          
+          <p style="font-size: 0.85rem; color: #777; font-style: italic; margin-top: 10px;">Visualizing a zero-egress environment where data and reasoning remain entirely localized.</p>
+      </div>
+  
+      <div style="background-color: #263238; color: #fff; padding: 25px; border-radius: 8px; margin-top: 40px;">
+          <h3 style="margin-top: 0; color: #81d4fa;">Zero-Egress Security Standard</h3>
+          <p style="font-size: 1rem; line-height: 1.6; margin-bottom: 0;">
+              By utilizing <strong>Local-First Execution</strong>, QueryForge eliminates the primary barrier to enterprise AI adoption: data exfiltration risk. The system requires no external API calls or telemetry, making it the standard for <strong>High-Integrity Strategic Planning</strong> in regulated sectors.
+          </p>
+      </div>
+  </section>
+  <section id="governance-compliance" style="max-width: 1000px; margin: 40px auto; padding: 0 20px;">
+    <h2 style="color: var(--primary); border-bottom: 2px solid var(--secondary); padding-bottom: 10px;">Governance & Regulatory Compliance</h2>
+    
+    <p style="font-size: 1.1rem; line-height: 1.6; color: #333;">
+        QueryForge is engineered to meet the stringent standards of highly regulated industries. By eliminating third-party dependencies and localizing the planning logic, the system provides a <strong>High-Integrity Governance Framework</strong> that satisfies modern data sovereignty and enterprise risk requirements.
+    </p>
 
-<h3>3.1 Strategic Value Proposition</h3>
-<p>The planner reduces migration planning time by 60–80%, identifies risks early, provides transparent cost/timeline modeling, and suggests proven acceleration patterns. It enables internal teams to produce consultant-quality migration strategies without external vendor lock-in during initial phases, while maintaining full data sovereignty.</p>
+    <h3 style="color: var(--secondary); margin-top: 30px;">1. The "Traceability of Truth" Framework</h3>
+    <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; border: 1px solid #ddd;">
+        <thead>
+            <tr style="background-color: var(--soft-bg); text-align: left;">
+                <th style="padding: 12px; border: 1px solid #ddd; color: var(--primary);">Governance Pillar</th>
+                <th style="padding: 12px; border: 1px solid #ddd; color: var(--primary);">Implementation Detail</th>
+                <th style="padding: 12px; border: 1px solid #ddd; color: var(--primary);">Regulatory Outcome</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Data Sovereignty</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Full support for data residency requirements via local-only execution.</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Alignment with GDPR and sovereign data mandates.</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Dependency Risk</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">No external API dependencies or cloud-based reasoning.</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Mitigation of third-party supply chain and exfiltration risks.</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Auditability</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Comprehensive JSON logs capturing reasoning traces and assumptions.</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Suitability for internal model risk and compliance reviews.</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">EA Alignment</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Modular, containerized architecture following standard patterns.</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Seamless integration with enterprise architecture (EA) governance.</td>
+            </tr>
+        </tbody>
+    </table>
 
-<h3>3.2 Regulatory Strategy</h3>
-<p>All processing occurs locally with no external API calls by default. Input data remains on-user device. Future extensions can incorporate configurable redaction and audit logging for regulated industries. The open-source nature allows enterprise security teams to review and harden the codebase.</p>
+    <div style="margin: 40px 0; text-align: center;">
+        <h4 style="color: var(--primary); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">Governance Overlay: Integrated Guardrails</h4>
+        
+        <p style="font-size: 0.85rem; color: #777; font-style: italic; margin-top: 10px;">Visualizing the layering of strategic controls across the planning pipeline.</p>
+    </div>
 
-<h2>4. Users</h2>
+    <div style="background-color: #f8f9fa; border: 1px solid var(--primary); padding: 25px; border-radius: 8px; margin-top: 40px;">
+        <h3 style="margin-top: 0; color: var(--primary);">The Compliance Dividend</h3>
+        <p style="font-size: 1rem; line-height: 1.6; margin-bottom: 0;">
+            QueryForge transforms regulatory compliance from a barrier into a strategic asset. By providing <strong>Total Population Certainty</strong> and defensible audit trails, organizations can accelerate ERP transformation without compromising their security or architectural posture.
+        </p>
+    </div>
+</section>
+        
 
-<h3>4.1 Target User Personas</h3>
-<ul>
-  <li><strong>Enterprise Architect / IT Director</strong>: Leads migration strategy and needs rapid scenario modeling.</li>
-  <li><strong>ERP Program Manager</strong>: Requires detailed phased plans and stakeholder communication artifacts.</li>
-  <li><strong>Transformation Consultant</strong>: Uses tool internally for initial client assessments.</li>
-  <li><strong>CIO / CTO</strong>: Seeks high-level risk and cost overview for budget approval.</li>
-</ul>
-
-<h3>4.2 Lightweight Requirements and User Stories</h3>
-<p>As a user, I want to:</p>
-<ul>
-  <li>Input current ERP details and receive a complete migration roadmap.</li>
-  <li>See identified risks with severity and mitigation recommendations.</li>
-  <li>Get realistic timeline and cost estimates based on system complexity.</li>
-  <li>Compare multiple migration approaches (big bang vs phased vs hybrid).</li>
-  <li>Export the plan as structured Markdown/PDF for stakeholder review.</li>
-  <li>Run everything locally with no data transmission.</li>
-</ul>
-
-<h3>4.3 User Journey Map</h3>
-<ol>
-  <li>User starts app → selects migration type (lift-and-shift, re-platform, re-architect).</li>
-  <li>Agent asks targeted questions about current system (modules, custom code %, data volume, integrations).</li>
-  <li>Agent analyzes input → generates scoped assessment.</li>
-  <li>Agent identifies risks and recommends mitigation strategies.</li>
-  <li>Agent proposes phased plan with timeline and cost model.</li>
-  <li>Agent suggests acceleration options (e.g., automated data mapping, parallel testing).</li>
-  <li>User reviews/edits → exports final roadmap report.</li>
-</ol>
-
-<h2>5. Design and Architecture</h2>
-
-<h3>5.1 Phase A: Vision</h3>
-<p>Create an agentic planning system that replicates senior consultant migration methodology while operating in complete privacy.</p>
-
-<h3>5.2 Phase B: Business</h3>
-<p>Core capabilities: system scoping, risk identification, phasing strategy, timeline/cost modeling, recommendation engine. Success metrics: plan completeness, risk coverage accuracy, time saved vs manual planning.</p>
-
-<h3>5.3 Phase C: Information</h3>
-<p>State maintained in LangGraph memory: user inputs, agent outputs, risk register, phase definitions, cost assumptions. All persisted locally in JSON.</p>
-
-<h3>5.4 Phase D: Technology</h3>
-<ul>
-  <li>Orchestration: LangGraph (stateful graph workflow)</li>
-  <li>LLM backend: Ollama with open-source models (Llama 3.1 8B default)</li>
-  <li>Frontend: Streamlit for interactive input and report viewing</li>
-  <li>Rules engine: Static JSON knowledge base of migration patterns and risks</li>
-  <li>Output: Markdown report with optional PDF export</li>
-</ul>
-
-<h2>6. Rollout and Roadmap</h2>
-
-<h3>6.1 Current State</h3>
-<p>MVP with core agents, basic migration patterns, Streamlit demo.</p>
-
-<h3>6.2 Future State</h3>
-<ul>
-  <li>Integration with real ERP metadata exports</li>
-  <li>Team collaboration mode</li>
-  <li>Scenario comparison dashboard</li>
-  <li>Custom rules import for enterprise-specific patterns</li>
-</ul>
-
-<h3>6.3 Agile Delivery</h3>
-<p>PI-1: Core scoping and risk agents  
-PI-2: Phasing and timeline engine  
-PI-3: Cost modeling and recommendations  
-PI-4: UI and report generation  
-PI-5: Local persistence and export</p>
-
-<h3>6.4 Change Management</h3>
-<p>Open-source with clear contribution guidelines. Version-controlled migration patterns JSON for enterprise customization.</p>
-
-<h3>6.5 Target Value Stream</h3>
-<p>Input collection → System analysis → Risk identification → Strategy generation → Plan synthesis → Report delivery</p>
-
-<h2>7. Multi-Agent Model</h2>
-
-<h3>7.1 Agent Personas</h3>
-<ul>
-  <li><strong>Scoper Agent</strong>: Gathers and validates system details</li>
-  <li><strong>Risk Assessor Agent</strong>: Identifies technical, business, and compliance risks</li>
-  <li><strong>Phasing Planner Agent</strong>: Recommends migration approach and phase breakdown</li>
-  <li><strong>Cost Estimator Agent</strong>: Models resource and timeline costs</li>
-  <li><strong>Recommendation Engine</strong>: Suggests acceleration strategies and best practices</li>
-  <li><strong>Report Formatter</strong>: Generates structured final deliverable</li>
-</ul>
-
-<h3>7.2 Reasoning Trace</h3>
-<p>Full execution trace preserved and displayed for transparency.</p>
-
-<h3>7.3 Decision Matrix and Conflict Resolution</h3>
-<p>Risk scores and phase recommendations weighted by severity and business impact. Conflicts resolved by priority (compliance > cost > timeline).</p>
-
-<h2>8. Intelligence Platform</h2>
-
-<h3>8.1 Unified Intelligence Stack Architecture</h3>
-<p>LangGraph as orchestrator with typed state. Agents as nodes with tool access (none external by default). All local execution.</p>
-
-<h3>8.2 The RAG Component (Future Extension)</h3>
-<p>Optional local vector store of enterprise migration case studies and best practices.</p>
-
-<h3>8.3 Observability Layer</h3>
-<p>Local logging of agent decisions and confidence scores.</p>
-
-<h2>9. The Model Lifecycle</h2>
-<ul>
-  <li>Default: Llama 3.1 8B for speed/accuracy</li>
-  <li>Prompt templates version-controlled</li>
-  <li>Evaluation against historical migration outcomes</li>
-  <li>Community feedback loop for pattern improvement</li>
-</ul>
-
-<h2>10. Infrastructure</h2>
-
-<h3>10.1 Blueprint</h3>
-<ul>
-  <li>Local: Docker Compose with Ollama</li>
-  <li>Hosted demo: Hugging Face Spaces (Streamlit)</li>
-  <li>Enterprise: On-prem deployment package</li>
-</ul>
-
-<h3>10.2 Security</h3>
-<p>No external communication. All data local. Open code for audit.</p>
-
-<h3>10.3 Governance and Compliance</h3>
-<p>Transparent reasoning traces. Configurable risk thresholds.</p>
-
-<h3>10.4 SRE</h3>
-<p>Local execution with graceful error handling.</p>
-
-<h2>11. Impact & Outcomes</h2>
-<p>Expected outcomes:</p>
-<ul>
-  <li>60–80% reduction in initial migration planning effort</li>
-  <li>Early identification of high-impact risks</li>
-  <li>More accurate budget and timeline forecasting</li>
-  <li>Democratization of consultant-level migration expertise</li>
-  <li>Foundation for enterprise-specific customization</li>
-</ul>
-
-<div class="links">
-    <h2>Supporting Documentation</h2>
-    <ul>
-      <li><a href="migration-catalog.html">Migration Catalog – Patterns, Risks & Phases</a></li>
-      <li><a href="Sample-Migration-Plans.html">Sample Migration Plans – Real-World Examples</a></li>
-      <li><a href="Risk-Assessment-Rules.html">Risk Assessment Rules Engine</a></li>
-    </ul>
-  </div>
-
+    </div>
 </body>
 </html>
